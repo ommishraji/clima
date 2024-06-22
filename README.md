@@ -1,16 +1,30 @@
 # clima
 
-A new Flutter project.
+A weather application for assignment project of SoluLab. It fetch data from OpenWeatherMap and shows weather condition of user location as well as of desired locations.
 
-## Getting Started
+## Description 
 
-This project is a starting point for a Flutter application.
+This Flutter application fetch data form OpenWeatherMap API and show following data:
+- Temperature
+- Humidity
+- Wind Speed
+- Sky Condition
+- One Suggestion based on weather condition
 
-A few resources to get you started if this is your first Flutter project:
+This Flutter Application:
+- Get user location via Geolocator plugin
+- Fetch weather data of user's latitude and longitude
+- Fetch weather data of user's entered location
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Table of Contents
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Video](#video)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
