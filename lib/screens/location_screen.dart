@@ -19,6 +19,8 @@ class _LocationScreenState extends State<LocationScreen> {
   late String icon;
   late String cityname;
   late String message;
+  late String humidity;
+  late String wind;
 
   @override
   void initState() {
@@ -36,7 +38,8 @@ class _LocationScreenState extends State<LocationScreen> {
       icon = wm.getWeatherIcon(condition);
       message = wm.getMessage(temperature);
       cityname = data['name'];
-      print('Running ji');
+      humidity = data['main']['humidity'].toString();
+      wind = data['wind']['speed'].toString();
     });
   }
 
@@ -79,8 +82,13 @@ class _LocationScreenState extends State<LocationScreen> {
                          MaterialPageRoute(builder: (context) => CityScreen()));
                      if(cityName != null) {
                        Location lo = Location();
-                       var weatherdata = await lo.locationweather(cityName);
-                       updateUI(weatherdata);
+                       try {
+                         var weatherdata = await lo.locationweather(cityName);
+                         updateUI(weatherdata);
+                       }
+                       catch(e){
+                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e')));
+                       }
                      }
                     },
                     child: const Icon(
@@ -93,15 +101,32 @@ class _LocationScreenState extends State<LocationScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
-                child: Row(
-                  children:  <Widget>[
-                    Text(
-                      '$temperature°',
-                      style: kTempTextStyle,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children:  <Widget>[
+                        Text(
+                          '$temperature°',
+                          style: kTempTextStyle,
+                        ),
+                         Text(
+                          icon,
+                          style: kConditionTextStyle,
+                        ),
+                      ],
                     ),
-                     Text(
-                      icon,
-                      style: kConditionTextStyle,
+                    Text('Humidity - $humidity',
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 30
+                      ),
+                    ),
+                    Text('Wind speed - $wind',
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 30
+                      ),
                     ),
                   ],
                 ),

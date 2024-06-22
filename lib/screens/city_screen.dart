@@ -50,9 +50,17 @@ class _CityScreenState extends State<CityScreen> {
                 onPressed: () async {
                   Navigator.pop(context, cityName);
                 },
-                child: const Text(
-                  'Get Weather',
-                  style: kButtonTextStyle,
+                child: Material(
+                  elevation: 10,
+                  color: Colors.purple,
+                  borderRadius: BorderRadius.circular(30),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 35),
+                    child: const Text(
+                      'Get Weather',
+                      style: kButtonTextStyle,
+                    ),
+                  ),
                 ),
               ),
             ],

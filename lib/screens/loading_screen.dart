@@ -23,11 +23,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   
   void getlocationweather() async{
     Location location = Location();
-<<<<<<< HEAD
-    dynamic data =  await location.weatherdata();
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LocationScreen(data)));
-    print(data);
-=======
     try {
       dynamic data = await location.weatherdata();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LocationScreen(data)));
@@ -37,26 +32,25 @@ class _LoadingScreenState extends State<LoadingScreen> {
         SnackBar(content: Text('Network error. Please check your internet connection & restart the app')),
       );
     }
->>>>>>> 2eb8c97 (Second Commit)
   }
 
 
-  
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-<<<<<<< HEAD
+
         // child: SpinKitChasingDots(
         //   color: Colors.white,
         //   size: 100,
         // ),
-=======
+
         child: SpinKitChasingDots(
           color: Colors.white,
           size: 100,
         ),
->>>>>>> 2eb8c97 (Second Commit)
+
       ),
     );
   }

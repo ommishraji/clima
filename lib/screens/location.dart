@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import '../services/networking.dart' as net;
 
@@ -12,6 +13,9 @@ class Location{
     var url = "$apiurl?q=$cityName&appid=$apikey&units=metric";
     net.network Network = net.network(url);
     var weatherdata = await Network.getdata();
+    if(weatherdata == null)
+      throw Exception('This city name does not exist');
+    else
     return weatherdata;
   }
 
